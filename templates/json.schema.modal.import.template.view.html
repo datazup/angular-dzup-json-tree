@@ -1,0 +1,40 @@
+<section>
+    <div class="modal-header">
+        <h4 class="modal-title">Import sample data</h4>
+        <p class="text-muted small">
+            Imported file will be parsed and schema extracted
+        </p>
+    </div>
+    <div class="modal-body">
+        <div class="schema-import">
+            <div class="body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="input-sm" type="file" onchange="angular.element(this).scope().setFiles(this)" />
+                        </div>
+                        <div class="input-group">
+                            <select class="form-control input-sm" ng-model="uploadInfo.type">
+                                <option value="">Select type to upload...</option>
+                                <option value="JSON">JSON</option>
+                                <option value="CSV">CSV</option>
+                                <option value="XML">XML</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <button class="btn btn-default" ng-click="uploadFile()">Upload</button>
+                        </div>
+                    </div>
+                    <div class="has-error">{{ error }}</div>
+                </form>
+                <div class="preview" ng-hide="jsonSchema | isEmpty">
+                    <pre>{{ jsonSchema | prettyJSON }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</section>

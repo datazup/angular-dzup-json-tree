@@ -1,0 +1,8 @@
+<ul class="list-unstyled schema-info-list isroot" >
+      <!--drag-enter-class="on-drag-enter-custom" drop-validate="dropValidateHandler($drop, $event, $data)" ui-on-drop="onDrop($event,$data, model.properties.properties)"-->
+    
+    <li ng-repeat="(key, value) in model.properties.properties track by $index">     
+        <schema-object-item double-click="doubleClick" parent-path='key' is-read-only="isReadOnly" value="value" model="model" index="$index" collection="model.properties.properties"></schema-object-item>
+        <schema-object-factory double-click="doubleClick" parent-path='key' is-read-only="isReadOnly" value="value" model="model"></schema-object-factory>        
+    </li>    
+</ul>

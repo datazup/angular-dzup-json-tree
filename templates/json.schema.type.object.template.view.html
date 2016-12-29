@@ -1,0 +1,9 @@
+<div class="child-schema-object">
+    <!--<i class="fa" ng-class="{'fa-chevron-right': value!==model.selectedProperty, 'fa-chevron-down':value===model.selectedProperty}"></i>-->
+    <ul ng-if="value.properties" class="list-unstyled schema-info-list">
+        <li ng-repeat="(k, v) in value.properties track by $index" >
+            <schema-object-item double-click="doubleClick" parent-path="parentPath" is-read-only="isReadOnly" value="v" model="model" index="$index" collection="value.properties"></schema-object-item>
+            <schema-object-factory double-click="doubleClick" parent-path="parentPath"  is-read-only="isReadOnly" value="v" model="model"></schema-object-factory>
+        </li>
+    </ul>
+</div>

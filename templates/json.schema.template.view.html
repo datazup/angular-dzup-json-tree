@@ -1,0 +1,46 @@
+<div class="dzup-json-schema">
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="Common">
+            <div class="add">
+                <form class="form-inline" ng-if="!isReadOnly">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input ng-model="newProperty.name" type="text" class="form-control input-sm" id="newPropertyName" placeholder="Property Name">
+                        </div>
+                        <div class="input-group">
+                            <select class="form-control input-sm" ng-model="newProperty.type">
+                                <option value="">Select type...</option>
+                                <option value="object">object</option>
+                                <option value="array">array</option>
+                                <option value="string">string</option>
+                                <option value="datetime">datetime</option>
+                                <option value="number">number</option>
+                                <option value="boolean">boolean</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <button type="submit" ng-click="addNewProperty()" class="btn btn-primary btn-sm">Add</button>
+                        </div>
+                    </div>
+                    <div class="has-error">{{ error }}</div>
+                </form>
+                <schema-tree is-read-only="isReadOnly" model="innerModel"></schema-tree>
+            </div>
+            <div class="json-schema">
+            </div>
+        </uib-tab>
+        <uib-tab index="1" heading="Import" ng-if="!isReadOnly">
+            <div class="import">
+                <button class="btn btn-primary btn-sm" ng-click="openModalImport()">Import</button>
+                <div class="preview" ng-hide="innerModel.properties.properties | isEmpty">
+                    <pre>{{ innerModel.properties.properties | prettyJSON }}</pre>
+                </div>
+            </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Advanced" ng-if="!isReadOnly" ng-click="prepareAdvancedView()">
+            <div class="advanced">
+                <form sf-schema="advancedSchema" sf-form="advancedForm" sf-options="{setSchemaDefaults:true, validateOnRender: true}" sf-model="advancedInnerModel"></form>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>
